@@ -142,6 +142,9 @@ footer{
 </head>
 
 <body>
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <!-- HERO -->
 
@@ -156,6 +159,12 @@ footer{
     <button class="btn" onclick="startJourney()">
         Open Your Gift 🎁
     </button>
+    <button class="btn" onclick="playMusic()">
+        🎵 Play Music
+    </button>
+    function playMusic() {
+    document.getElementById("bgMusic").play();
+    }
 
 </section>
 
