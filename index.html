@@ -73,7 +73,8 @@ body{
 .card{
     max-width:850px;
     width:100%;
-    background:white;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
     border-radius:25px;
     padding:40px;
     text-align:center;
@@ -137,7 +138,30 @@ footer{
     text-align:center;
     color:#888;
 }
+.star{
+    position:fixed;
+    pointer-events:none;
+    animation:twinkle linear forwards;
+}
 
+@keyframes twinkle{
+
+    0%{
+        opacity:0;
+        transform:scale(0);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(0);
+    }
+
+}
 </style>
 </head>
 
@@ -176,20 +200,7 @@ footer{
 
 <h2>💌 Dear Qudsia</h2>
 
-<p>
-Sometimes life introduces us to people in unexpected ways.
-<br><br>
-
-I never thought playing a game would lead me to meeting someone as kind, funny and wonderful as you.
-
-<br><br>
-
-Since then we've shared conversations, laughter, memories and even countless Mobile Legends matches.
-
-<br><br>
-
-Today is your special day and I wanted to create something that was made especially for you.
-</p>
+<p id="typewriter"></p>
 
 </div>
 
@@ -260,6 +271,70 @@ the best part was spending time together.
 
 </section>
 
+<section class="section">
+
+<div class="card">
+
+<h2>🎮 Mobile Legends Zone</h2>
+
+<div class="memory">
+
+<h3>🏆 Our ML Journey</h3>
+
+<p>
+
+Victories: Many ❤️
+
+<br><br>
+
+Defeats: Also Many 😂
+
+<br><br>
+
+Best Duo Partner:
+Qudsia 🌸
+
+<br><br>
+
+Favorite Part:
+Spending time together.
+
+</p>
+
+</div>
+
+<div class="memory">
+
+<h3>⭐ Birthday MVP Award</h3>
+
+<p>
+
+Player Name:
+Qudsia
+
+<br><br>
+
+Role:
+Bringer Of Smiles
+
+<br><br>
+
+Rating:
+10/10
+
+<br><br>
+
+Achievement Unlocked:
+Most Wonderful Birthday Girl 🎂
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
 <!-- FINAL MESSAGE -->
 
 <section class="section">
@@ -315,6 +390,46 @@ Made with ❤️ especially for Qudsia
 function playMusic() {
     document.getElementById("bgMusic").play();
     }
+
+const letterText = `
+
+Sometimes life introduces us to people in unexpected ways.
+
+I never thought a marriage ceremony and a game would lead me to meeting someone as kind, funny and wonderful as you.
+
+Since then we've shared conversations, laughter, memories and countless Mobile Legends matches.
+
+Today is your special day and I wanted to create something made especially for you.
+
+Happy Birthday Qudsia ❤️
+
+`;
+
+let index = 0;
+
+function startTyping(){
+
+    const target =
+    document.getElementById("typewriter");
+
+    const timer = setInterval(()=>{
+
+        if(index < letterText.length){
+
+            target.innerHTML +=
+            letterText.charAt(index);
+
+            index++;
+
+        }else{
+
+            clearInterval(timer);
+
+        }
+
+    },40);
+
+}
     
 function startJourney(){
 
@@ -327,6 +442,8 @@ function startJourney(){
     });
 
     startHearts();
+    startStars();
+    startTyping();
 }
 
 function startHearts(){
@@ -354,6 +471,41 @@ function startHearts(){
         },10000);
 
     },400);
+}
+
+function startStars(){
+
+    setInterval(()=>{
+
+        const star =
+        document.createElement("div");
+
+        star.className="star";
+
+        star.innerHTML="✨";
+
+        star.style.left=
+        Math.random()*100+"vw";
+
+        star.style.top=
+        Math.random()*100+"vh";
+
+        star.style.fontSize=
+        (10+Math.random()*15)+"px";
+
+        star.style.animationDuration=
+        (2+Math.random()*3)+"s";
+
+        document.body.appendChild(star);
+
+        setTimeout(()=>{
+
+            star.remove();
+
+        },5000);
+
+    },300);
+
 }
 
 function showSecret(){
